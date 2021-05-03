@@ -1,0 +1,15 @@
+class Solution:
+    def numPairsDivisibleBy60(self, time: List[int]) -> int:
+        total = 0
+        diff = defaultdict(int)
+        for k in time:
+            diff[k%60]+=1
+        
+        for i in diff:
+            if i>30:
+                pass
+            elif i==30 or i==0:
+                total+=(((diff[i]-1)*diff[i])//2)
+            elif 60-i in diff:
+                total+= diff[i]*diff[60-i]
+        return total
